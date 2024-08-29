@@ -1,1 +1,18 @@
+import numpy as np
+import matplotlib.pyplot as plt
 
+
+#2.2#
+def f(x):
+    return 1 / np.sqrt(1 + np.e*(x*2))
+
+def CentralDerivative(f, x, h):
+    d = 0.
+    if h != 0:
+        d = (f(x + h) - f(x - h)) / (2 * h)
+    return d
+
+x = np.linspace(-10,10,1000)
+h = 0.05  
+
+plt.scatter(x,CentralDerivative(f, x, h))
