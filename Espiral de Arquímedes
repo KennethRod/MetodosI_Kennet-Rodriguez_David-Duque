@@ -1,1 +1,15 @@
 
+theta = np.linspace(0, 2*np.pi, 1000)
+
+a = 0
+b = 1
+ 
+r = a + b * theta
+
+x = r * np.cos(theta)
+y = r * np.sin(theta)
+
+plt.figure(figsize=(6, 6))
+plt.plot(x, y, label='Espiral de Arquímedes')
+
+plt.show()
