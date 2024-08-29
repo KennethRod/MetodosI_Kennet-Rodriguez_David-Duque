@@ -1,9 +1,20 @@
-def maximos(archivo):
-  datos = np.loadtxt(archivo.csv, delimiter=' ')
-  x = datos[:,0]
-  y = datos[:,1]
-  i = 0
-  while i < len(y):
-    a = i-1
-    b = i+1
-    if i < len(y) and b < len(y): 
+  import pandas as pd
+  def ml(datos):
+    x = datos[:,0]
+    y = datos[:,1]
+    mlx = []
+    mly = []
+    i = 1
+    while i < len(y):
+      a = i-1
+      b = i+1
+      if i < len(y) and b < len(y):
+        if y[i] > y[a] and y[i] > y[b]:
+          py = i
+          my = y[i]
+          mly.append(my)
+          mx = x[py]
+          mlx.append(mx)
+    i = b
+    ml = pd.Series(mlx,mly,name="coordenadas maximos locales")
+  return ml
