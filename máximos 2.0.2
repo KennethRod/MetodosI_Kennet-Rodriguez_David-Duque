@@ -1,0 +1,9 @@
+def maximos(archivo):
+  datos = np.loadtxt(archivo.csv, delimiter=' ')
+  x = datos[:,0]
+  y = datos[:,1]
+  i = 0
+  while i < len(y):
+    a = i-1
+    b = i+1
+    if i < len(y) and b < len(y): 
