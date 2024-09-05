@@ -1,1 +1,78 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def f(x):
+    return np.tan(x)
+
+
+
+# c)
+
+h = 0.01
+x_values = np.arange(0.1, 1.1 + h, h) 
+derivada_progresiva = []
+
+# Calcular la derivada progresiva
+for x in x_values:
+    f_x0 = f(x)
+    f_x1 = f(x + h)
+    f_x2 = f(x + 2 * h)
+    d_progresiva = (1 / (2 * h)) * (-3 * f_x0 + 4 * f_x1 - f_x2)
+    derivada_progresiva.append(d_progresiva)
+
+
+
+
+# d)
+h = 0.01
+x_values = np.arange(0.1 + h, 1.1 - h + h, h) 
+derivada_central = []
+
+# Calcular la derivada central
+for x in x_values:
+    f_xh = f(x + h)
+    f_xmh = f(x - h)
+    d_central = (f_xh - f_xmh) / (2 * h)
+    derivada_central.append(d_central)
+
+
+
+# e) graficar derivada
+def f_prime(x):
+    return np.sec(x)**2
+
+
+h = 0.01
+x_values = np.arange(0.1, 1.1 + h, h)
+derivada_progresiva = [(1 / (2 * h)) * (-3 * f(x) + 4 * f(x + h) - f(x + 2 * h)) for x in x_values]
+derivada_central = [(f(x + h) - f(x - h)) / (2 * h) for x in x_values]
+derivada_analitica = f_prime(x_values)
+
+plt.figure(figsize=(12, 6))
+plt.plot(x_values, derivada_analitica, label='Derivada Analítica', color='black')
+plt.plot(x_values, derivada_progresiva, label='Derivada Progresiva', linestyle='--')
+plt.plot(x_values, derivada_central, label='Derivada Central', linestyle='--')
+plt.xlabel('x')
+plt.ylabel('Derivada')
+plt.title('Derivadas de la función $\tan(x)$')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+# f) graficar error
+
+error_progresiva = np.abs(derivada_analitica - derivada_progresiva)
+error_central = np.abs(derivada_analitica - derivada_central)
+
+plt.figure(figsize=(12, 6))
+plt.plot(x_values, error_progresiva, label='Error Progresivo', linestyle='--')
+plt.plot(x_values[1:-1], error_central, label='Error Central', linestyle='--')  # Ajuste para la longitud
+plt.xlabel('x')
+plt.ylabel('Error')
+plt.title('Error Nodal de las Derivadas Estimadas')
+plt.legend()
+plt.grid(True)
+plt.show()
+
 
