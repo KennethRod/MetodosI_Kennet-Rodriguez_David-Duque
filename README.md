@@ -1,6 +1,6 @@
 # Métodos computacionales
 
-Descripción corta y concisa del propósito del proyecto.
+Tareas notas métodos computacionales
 
 ## Tabla de Contenidos
 - [Instalación](#instalación)
