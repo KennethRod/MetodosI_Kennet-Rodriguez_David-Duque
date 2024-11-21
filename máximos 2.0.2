@@ -1,5 +1,18 @@
 import pandas as pd
-def ml(datos):
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def datos(archivo):
+    datos= np.loadtxt(archivo)
+    x =  datos[0 :,0]
+    y = datos[0:,1]
+    return [x,y]
+dt=datos("EstrellaEspectro.txt")
+
+def maximo(datos):
   x = datos[:,0]
   y = datos[:,1]
   mlx = []
@@ -16,5 +29,8 @@ def ml(datos):
         mx = x[py]
         mlx.append(mx)
   i = b
-  ml = pd.Series(mlx,mly,name="coordenadas maximos locales")
+  ml = pd.Series(mlx,mly)
   return ml
+
+maximos=maximo(dt)
+
